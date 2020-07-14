@@ -171,12 +171,17 @@ while True:
             elif event.type == KEYDOWN:
                 if event.key == pygame.K_RIGHT:
                     active_tetrimino.move(1, 0)
+                elif event.key == pygame.K_DOWN:
+                    currentDropTime = baseDropTime//20
                 elif event.key == pygame.K_LEFT:
                     active_tetrimino.move(-1, 0)
                 elif event.key == pygame.K_UP or event.key == pygame.K_x:
                     active_tetrimino.rotate(1)
                 elif event.key == pygame.K_z or event.key == pygame.K_RCTRL:
                     active_tetrimino.rotate(-1)
+            elif event.type == KEYUP:
+                if event.key == pygame.K_DOWN:
+                    currentDropTime = baseDropTime
 
         # drop clock which indicates how fast the pieces fall
         # increase the drop clock each frame, once it passes current_drop_time then the piece will fall
